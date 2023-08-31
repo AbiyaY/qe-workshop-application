@@ -1,11 +1,11 @@
 package com.example.qeproject.model;
 
-public class OperatorService {
+public class Operator {
     private String operator;
 
-    public OperatorService(){}
+    public Operator(){}
 
-    public OperatorService(String operator){
+    public Operator(String operator){
         this.operator = operator;
     }
 
