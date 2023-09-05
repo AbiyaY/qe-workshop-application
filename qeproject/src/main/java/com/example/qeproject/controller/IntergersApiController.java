@@ -27,16 +27,6 @@ public class IntergersApiController {
     @PostMapping
     public void enterTwoNumbers(@RequestBody Integers integers){
         integersService.storeIntegers(integers);
-        RestTemplate restTemplate = new RestTemplate();
-        String resourceUrl = "http://localhost:8080/mathservice/integers";
-//        HttpEntity<Integers> request = new HttpEntity<Integers>(integersService.getIntegers());
-//        restTemplate.exchange(
-//                resourceUrl,
-//                HttpMethod.PUT,
-//                request,
-//                Void.class);
-        Void integerCreateResponse = restTemplate
-                .postForObject(resourceUrl, integersService.getIntegers(), Void.class);
-        //return integerCreateResponse;
+        integersService.makePostRequestToMathService();
     }
 }
