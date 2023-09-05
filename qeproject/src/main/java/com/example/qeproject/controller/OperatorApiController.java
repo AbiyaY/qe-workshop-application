@@ -28,14 +28,7 @@ public class OperatorApiController {
     @PostMapping
     public Double enterOperator(@RequestBody Operator operator){
         operatorService.storeOperator(operator);
-        RestTemplate restTemplate = new RestTemplate();
-        String resourceUrl = "http://localhost:8080/mathservice/operator";
-        //HttpEntity<Operator> request = new HttpEntity<Operator>(operatorService.getOperator());
-        Double response = restTemplate
-                .postForObject(resourceUrl, operatorService.getOperator(), Double.class);
-        return response;
-//        operatorService.storeOperator(operator);
-//        return "Operator entered successfully";
+        return operatorService.makePostRequestToMathService();
     }
 
 }
