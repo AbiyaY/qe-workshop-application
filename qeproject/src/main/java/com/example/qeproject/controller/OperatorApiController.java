@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/operatorservice")
 public class OperatorApiController {
 
@@ -25,13 +26,13 @@ public class OperatorApiController {
     }
 
     @PostMapping
-    public Integer enterOperator(@RequestBody Operator operator){
+    public Double enterOperator(@RequestBody Operator operator){
         operatorService.storeOperator(operator);
         RestTemplate restTemplate = new RestTemplate();
         String resourceUrl = "http://localhost:8080/mathservice/operator";
         //HttpEntity<Operator> request = new HttpEntity<Operator>(operatorService.getOperator());
-        Integer response = restTemplate
-                .postForObject(resourceUrl, operatorService.getOperator(), Integer.class);
+        Double response = restTemplate
+                .postForObject(resourceUrl, operatorService.getOperator(), Double.class);
         return response;
 //        operatorService.storeOperator(operator);
 //        return "Operator entered successfully";
