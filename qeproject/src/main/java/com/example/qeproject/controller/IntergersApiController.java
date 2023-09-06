@@ -5,6 +5,8 @@ import com.example.qeproject.service.IntegersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,13 +22,11 @@ public class IntergersApiController {
         this.integersService = integersService;
     }
 
-    @GetMapping
-    public Integers getIntegers() {
-        return integersService.getIntegers();
-    }
     @PostMapping
-    public void enterTwoNumbers(@RequestBody Integers integers){
+    public ResponseEntity enterTwoNumbers(@RequestBody Integers integers){
         integersService.storeIntegers(integers);
         integersService.makePostRequestToMathService();
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
