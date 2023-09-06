@@ -32,23 +32,24 @@ public class IntergersApiControllerUnitTest {
         String json = mapper.writeValueAsString(integers);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/numberservice")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andDo(MockMvcResultHandlers.print());
+                                              .contentType(MediaType.APPLICATION_JSON)
+                                              .content(json)
+                                              .accept(MediaType.APPLICATION_JSON))
+               .andExpect(MockMvcResultMatchers.status().isCreated())
+               .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void postStringAsInput_BadRequest() throws Exception {
 
-        String wrongInput = "This is the wrong input type";
+        String wrongInput = """
+                {"number1": "One","number2":"Two"}""";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/numberservice")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(wrongInput)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                .andDo(MockMvcResultHandlers.print());
+                                              .contentType(MediaType.APPLICATION_JSON)
+                                              .content(wrongInput)
+                                              .accept(MediaType.APPLICATION_JSON))
+               .andExpect(MockMvcResultMatchers.status().isBadRequest())
+               .andDo(MockMvcResultHandlers.print());
     }
 }

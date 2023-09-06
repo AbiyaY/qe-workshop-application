@@ -23,7 +23,7 @@ public class IntergersApiController {
     }
 
     @PostMapping
-    public ResponseEntity enterTwoNumbers(@RequestBody Integers integers){
+    public ResponseEntity<Void> enterTwoNumbers(@RequestBody Integers integers){
         integersService.storeIntegers(integers);
         integersService.makePostRequestToMathService();
 
