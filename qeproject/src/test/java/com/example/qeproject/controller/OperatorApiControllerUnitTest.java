@@ -2,6 +2,7 @@ package com.example.qeproject.controller;
 
 
 import com.example.qeproject.model.Operator;
+import com.example.qeproject.model.OperatorEnum;
 import com.example.qeproject.service.OperatorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -36,9 +37,10 @@ public class OperatorApiControllerUnitTest {
 
     @Test
 public void postOperatorAsAnObject_isCreated() throws Exception {
-    Operator operator = new Operator("multiply");
-    String json = mapper.writeValueAsString(operator);
+    OperatorEnum operatorEnum = OperatorEnum.MULTIPLY;
+    String json = mapper.writeValueAsString(operatorEnum);
 
+    //Stubbed service method which returns 2.00 when hit by the controller
     when(service.makePostRequestToMathService())
             .thenReturn(2.00);
 
@@ -52,9 +54,21 @@ public void postOperatorAsAnObject_isCreated() throws Exception {
 
    Assertions.assertEquals(2.0, Double.parseDouble(result.getResponse().getContentAsString()));
 
-
-
 }
+
+    @Test
+    public void postStringAsInput_BadRequest() throws Exception {
+
+        String wrongInput = """
+                {"operator": "One"}""";
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/operatorservice")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(wrongInput)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andDo(MockMvcResultHandlers.print());
+    }
 
 
 
