@@ -6,9 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class OperatorService {
-    private ArrayList<Operator> storedOperator = new ArrayList<Operator>();
+    private List<Operator> storedOperator = new ArrayList<Operator>();
 
     public void storeOperator(Operator operator){
         storedOperator.clear();
@@ -19,11 +21,8 @@ public class OperatorService {
         RestTemplate restTemplate = new RestTemplate();
         String resourceUrl = "http://localhost:8080/mathservice/operator";
         Double response = restTemplate
-                .postForObject(resourceUrl, getOperator(), Double.class);
+                .postForObject(resourceUrl, storedOperator.get(0), Double.class);
         return response;
     }
 
-    public Operator getOperator(){
-        return storedOperator.get(0);
-    }
 }
