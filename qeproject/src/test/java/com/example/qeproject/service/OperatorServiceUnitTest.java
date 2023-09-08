@@ -22,7 +22,6 @@ public class OperatorServiceUnitTest {
     @InjectMocks
     private OperatorService operatorService = new OperatorService();
 
-
     @Test
     public void storeOperatorAndMakePostRequest () throws Exception {
 
@@ -36,7 +35,7 @@ public class OperatorServiceUnitTest {
                 .thenReturn(new ResponseEntity<Double>(5.0, HttpStatus.CREATED));
 
 
-
+// test comment
 
        Assertions.assertEquals(HttpStatus.CREATED, operatorService.makePostRequestToMathService().getStatusCode());
        Assertions.assertEquals(5.0, operatorService.makePostRequestToMathService().getBody());
