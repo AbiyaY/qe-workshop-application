@@ -2,6 +2,7 @@ package com.example.qeproject.controller;
 
 import com.example.qeproject.model.Integers;
 import com.example.qeproject.model.Operator;
+import com.example.qeproject.model.OperatorEnum;
 import com.example.qeproject.service.IntegersService;
 import com.example.qeproject.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class OperatorApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Double> enterOperator(@RequestBody Operator operator){
-        operatorService.storeOperator(operator);
+    public ResponseEntity<Double> enterOperator(@RequestBody OperatorEnum operatorEnum){
+        operatorService.storeOperator(operatorEnum);
         return new ResponseEntity<Double>(operatorService.makePostRequestToMathService(), HttpStatus.CREATED);
     }
 
