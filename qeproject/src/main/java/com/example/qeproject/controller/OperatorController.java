@@ -22,7 +22,7 @@ public class OperatorController {
     @PostMapping
     public ResponseEntity<Double> enterOperator(@RequestBody OperatorEnum operatorEnum){
         operatorService.storeOperator(operatorEnum);
-        return new ResponseEntity<Double>(operatorService.makePostRequestToMathService(), HttpStatus.CREATED);
+        return operatorService.makePostRequestToMathService();
     }
 
 }

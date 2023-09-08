@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -36,9 +38,10 @@ public void postOperatorAsAnObject_isCreated() throws Exception {
     OperatorEnum operatorEnum = OperatorEnum.MULTIPLY;
     String json = mapper.writeValueAsString(operatorEnum);
 
+
     //Stubbed service method which returns 2.00 when hit by the controller
     when(service.makePostRequestToMathService())
-            .thenReturn(2.00);
+            .thenReturn(new ResponseEntity<Double>(2.0, HttpStatus.CREATED));
 
     MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/operatorservice")
                                                              .contentType(MediaType.APPLICATION_JSON)

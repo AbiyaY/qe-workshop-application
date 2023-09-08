@@ -1,6 +1,8 @@
 package com.example.qeproject.service;
 
 import com.example.qeproject.model.OperatorEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,18 +11,20 @@ import java.util.List;
 
 @Service
 public class OperatorService {
-    private List<OperatorEnum> storedOperator = new ArrayList<OperatorEnum>();
+
+    private OperatorEnum operatorEnum;
+
+    @Autowired
+    RestTemplate restTemplate;
+
 
     public void storeOperator(OperatorEnum operatorEnum){
-        storedOperator.clear();
-        storedOperator.add(operatorEnum);
+        this.operatorEnum = operatorEnum;
     }
 
-    public Double makePostRequestToMathService() {
-        RestTemplate restTemplate = new RestTemplate();
+    public ResponseEntity<Double> makePostRequestToMathService() {
         String resourceUrl = "http://localhost:8080/mathservice/operator";
-        Double response = restTemplate
-                .postForObject(resourceUrl, storedOperator.get(0), Double.class);
+        ResponseEntity<Double> response = restTemplate.postForEntity(resourceUrl, operatorEnum, Double.class);
         return response;
     }
 
