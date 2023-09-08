@@ -1,7 +1,5 @@
 package com.example.qeproject.service;
 
-import com.example.qeproject.model.Integers;
-import com.example.qeproject.model.Operator;
 import com.example.qeproject.model.OperatorEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

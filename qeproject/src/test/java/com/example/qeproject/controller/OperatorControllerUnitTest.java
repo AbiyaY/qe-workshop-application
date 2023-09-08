@@ -1,7 +1,6 @@
 package com.example.qeproject.controller;
 
 
-import com.example.qeproject.model.Operator;
 import com.example.qeproject.model.OperatorEnum;
 import com.example.qeproject.service.OperatorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,17 +12,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import org.springframework.util.Assert;
 
 import static org.mockito.Mockito.when;
 
-@WebMvcTest(OperatorApiController.class)
-public class OperatorApiControllerUnitTest {
+@WebMvcTest(OperatorController.class)
+public class OperatorControllerUnitTest {
 
     @Autowired
     MockMvc mockMvc;

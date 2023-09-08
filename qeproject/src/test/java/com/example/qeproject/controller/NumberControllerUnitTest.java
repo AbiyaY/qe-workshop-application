@@ -1,7 +1,7 @@
 package com.example.qeproject.controller;
 
-import com.example.qeproject.model.Integers;
-import com.example.qeproject.service.IntegersService;
+import com.example.qeproject.model.NumberRepo;
+import com.example.qeproject.service.NumberService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@WebMvcTest(IntergersApiController.class)
-public class IntergersApiControllerUnitTest {
+@WebMvcTest(NumberController.class)
+public class NumberControllerUnitTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -23,12 +23,12 @@ public class IntergersApiControllerUnitTest {
     ObjectMapper mapper;
 
     @MockBean
-    IntegersService service;
+    NumberService service;
 
     @Test
     public void postTwoNumbersAsAnObject_isCreated() throws Exception {
 
-        Integers integers = new Integers(2, 5);
+        NumberRepo integers = new NumberRepo(2, 5);
         String json = mapper.writeValueAsString(integers);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/numberservice")
