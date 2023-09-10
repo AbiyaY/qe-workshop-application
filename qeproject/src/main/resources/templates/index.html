@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>QE Calculator</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- If we put this here, js will attempt to register callbacks before
+         the UI elements have been declared and ready to be accessed -->
+    <!--script type="text/javascript" th:src="@{/js/index.js}"></script-->
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/digital-numbers" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1>
+            QE Workshop Calculator for <span th:text="${name.charAt(0)}"/>
+        </h1>
+
+        <input type="number" placeholder="Number 1" id="num1" class="numbers">
+        <br>
+        <br>
+        <div class="button-container">
+            <button id="add">Add</button>
+            <button id="sub">Subtract</button>
+            <button id="mul">Multiply</button>
+            <button id="div">Divide</button> 
+        </div>
+        <br>
+        <input type="number" placeholder="Number 2" id="num2" class="numbers">
+        <br>
+        <br>
+        <button id="calc">Calculate</button>
+        <br>
+        <br>
+        <input type="number" readonly id="result" placeholder="Answer Displayed Here"> 
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
