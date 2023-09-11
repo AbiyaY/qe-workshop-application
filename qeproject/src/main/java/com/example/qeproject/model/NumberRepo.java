@@ -6,9 +6,7 @@ public class NumberRepo {
 
     private final Number number2;
 
-
-
-    public NumberRepo(int number1, int number2){
+    public NumberRepo(Number number1, Number number2){
         this.number1 = number1;
         this.number2 = number2;
     }
