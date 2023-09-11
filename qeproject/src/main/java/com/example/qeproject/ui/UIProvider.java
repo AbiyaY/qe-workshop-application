@@ -23,7 +23,7 @@ public class UIProvider
      */
     @GetMapping("/calc0")
     public String
-    servePage(@RequestParam(name="name", required=false, defaultValue= "everyone") String name,
+    servePage(@RequestParam(name="name", required=false, defaultValue= "Everyone") String name,
               Model model)
     {
         System.out.println("servePage 0");

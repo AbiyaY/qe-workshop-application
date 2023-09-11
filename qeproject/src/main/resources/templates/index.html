@@ -20,8 +20,11 @@
 <body>
     <div>
         <h1>
-            QE Workshop Calculator for <span th:text="${name.charAt(0)}"/>
+            QE Workshop Calculator for <span th:text="${name}"/>
         </h1>
+        <h3>
+            <span th:text="${clientId}"/>
+        </h3>
 
         <input type="number" placeholder="Number 1" id="num1" class="numbers">
         <br>
