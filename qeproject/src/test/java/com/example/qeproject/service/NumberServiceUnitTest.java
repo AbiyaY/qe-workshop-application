@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class NumberServiceTest {
+class NumberServiceUnitTest {
     @Mock
     private RestTemplate restTemplate;
 
