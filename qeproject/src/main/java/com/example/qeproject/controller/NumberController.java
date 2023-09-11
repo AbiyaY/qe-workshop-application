@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.*;
 public class NumberController {
 
     @Autowired
-    private final NumberService integersService;
+    private final NumberService numberService;
 
-    public NumberController(NumberService integersService){
-        this.integersService = integersService;
+    public NumberController(NumberService numberService){
+        this.numberService = numberService;
     }
 
     @PostMapping
     public ResponseEntity<Void> enterTwoNumbers(@RequestBody NumberRepo integers){
-        integersService.storeIntegers(integers);
-        integersService.makePostRequestToMathService();
+        numberService.storeIntegers(integers);
+        numberService.makePostRequestToMathService();
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
