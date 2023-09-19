@@ -8,15 +8,21 @@
 		<version>3.1.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.example</groupId>
-	<artifactId>qeproject</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>qeproject</name>
+	<artifactId>number-service</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<name>number-service</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<build>
+		<finalName>number-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -58,6 +64,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>3.4.0</version>
+		</dependency>
 	</dependencies>
 
 </project>
